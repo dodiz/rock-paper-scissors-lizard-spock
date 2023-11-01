@@ -11,7 +11,8 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
   const outline = useMemo(() => {
     const path =
       "M" +
-      [...moves, moves[0]]
+      Array(moves.length + 1)
+        .fill(0)
         .map(
           (_, i) =>
             `${r + r * Math.sin(angle * i)} ${r + r * -Math.cos(angle * i)}`
@@ -47,7 +48,7 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
         }}
       >
         {outline}
-        {moves.map((point, i) => (
+        {moves.map((Icon, i) => (
           <div
             key={i}
             className={styles.move}
@@ -58,7 +59,7 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
               animationDuration: `${animationMoveDuration}s`,
             }}
           >
-            {point}
+            <Icon />
           </div>
         ))}
       </div>

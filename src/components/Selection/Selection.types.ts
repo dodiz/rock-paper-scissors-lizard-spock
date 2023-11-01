@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
+import { ComponentProps, FC } from "react";
 
 export type SelectionProps = {
-  moves: ReactNode[];
+  moves: FC<ComponentProps<"svg">>[];
 };
