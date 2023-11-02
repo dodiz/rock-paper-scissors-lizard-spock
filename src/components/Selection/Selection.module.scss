@@ -1,52 +1,49 @@
 .container {
-    display: flex;
-    justify-content: center;
-    .ring {
-        position: relative;
-        margin-top: 20rem;
-        .move {
-            position: absolute;
-            translate: -50% -50%;
-            transition: all 0.2s ease-in-out;
-            scale: 0;
-            animation: scale 0.2s ease-in-out forwards, translate 0.2s ease-in-out forwards;
-            cursor: pointer;
-
-            &:hover, &.selected {
-                transform: scale(1.1);
-                filter: brightness(1.2) drop-shadow(0 0 2rem rgba(251, 251, 251, 0.2));
-            }
-        }
-        .outline {
-            opacity: 0;
-            animation-name: fadeIn;
-            animation-duration: 0.3s;
-            animation-timing-function: linear;
-            animation-fill-mode: forwards;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            width: 90%;
-            height: 90%;
-        }
+  display: flex;
+  transition: opacity 0.3s 0.2s ease-in-out;
+  justify-content: center;
+  .ring {
+    position: relative;
+    .move {
+      position: absolute;
+      translate: -50% -50%;
+      transition: all 0.2s ease-in-out;
+      scale: 0;
+      animation: scale 0.2s ease-in-out forwards,
+        translate 0.2s ease-in-out forwards;
+      cursor: pointer;
+      &:hover {
+        filter: brightness(1.2) drop-shadow(0 0 2rem rgba(251, 251, 251, 0.2));
+      }
     }
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: .2;
-    }
-}
-@keyframes translate {
-    from {
-        top: 50%;
-        left: 50%;
-    }
-}
-@keyframes scale {
-    to {
-      scale: 1
+    .outline {
+      opacity: 0;
+      animation-name: fadeIn;
+      animation-duration: 0.3s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 90%;
+      height: 90%;
     }
   }
+  &.selected {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.2;
+  }
+}
+@keyframes scale {
+  to {
+    scale: 1;
+  }
+}

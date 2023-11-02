@@ -1,5 +1,7 @@
-import { ComponentProps, FC } from "react";
+import { Move } from "@/types";
 
 export type SelectionProps = {
-  moves: FC<ComponentProps<"svg">>[];
+  moves: Move[];
+  selected: Move | null;
+  onSelect: (move: Move) => void;
 };

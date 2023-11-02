@@ -1,7 +1,7 @@
-import { ComponentProps, FC } from "react";
+import { FC } from "react";
 import { IconWrapper } from "./IconWrapper";
 
-export const ScissorsIcon: FC<ComponentProps<"svg">> = () => {
+export const ScissorsIcon: FC = () => {
   return (
     <IconWrapper shadowColor="#C76C1B" mainColor="#EB9F0E">
       <svg

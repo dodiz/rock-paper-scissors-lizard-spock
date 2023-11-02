@@ -1,13 +1,16 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useMemo } from "react";
 import { SelectionProps } from "./Selection.types";
 import styles from "./Selection.module.scss";
 
-const r = 200;
+const r = 180;
 const animationMoveDuration = 0.3;
 const animationMoveDelay = 0.1;
 
-export const Selection: FC<SelectionProps> = ({ moves }) => {
-  const [selected, setSelected] = useState<number | null>(null);
+export const Selection: FC<SelectionProps> = ({
+  moves,
+  onSelect,
+  selected,
+}) => {
   const angle = useMemo(() => (2 * Math.PI) / moves.length, [moves]);
   const outline = useMemo(() => {
     const path =
@@ -40,7 +43,7 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
   }, [moves, angle]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container + " " + (!!selected && styles.selected)}>
       <div
         className={styles.ring}
         style={{
@@ -49,14 +52,16 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
         }}
       >
         {outline}
-        {moves.map((Icon, i) => (
+        {moves.map((move, i) => (
           <div
             key={i}
-            onClick={() => setSelected(selected === i ? null : i)}
-            className={styles.move + " " + (selected === i && styles.selected)}
+            onClick={() => onSelect(move)}
+            className={
+              styles.move + " " + (selected === move && styles.selected)
+            }
             style={{
               translate:
-                selected === i
+                selected === move
                   ? `calc(${r}px - 50%) calc(${r}px - 50%)`
                   : `calc(-50% + ${
                       r + r * Math.sin(angle * i)
@@ -65,7 +70,7 @@ export const Selection: FC<SelectionProps> = ({ moves }) => {
               animationDuration: `${animationMoveDuration}s`,
             }}
           >
-            <Icon />
+            <move.Icon />
           </div>
         ))}
       </div>

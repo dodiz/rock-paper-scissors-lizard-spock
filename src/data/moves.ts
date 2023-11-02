@@ -5,31 +5,32 @@ import {
   ScissorsIcon,
   SpockIcon,
 } from "@/icons";
+import { Move } from "@/types";
 
-export const moves = [
+export const moves: Move[] = [
   {
     name: "rock",
     beats: ["scissors", "lizard"],
-    icon: RockIcon,
+    Icon: RockIcon,
   },
   {
     name: "paper",
     beats: ["rock", "spock"],
-    icon: PaperIcon,
+    Icon: PaperIcon,
   },
   {
     name: "scissors",
     beats: ["paper", "lizard"],
-    icon: ScissorsIcon,
+    Icon: ScissorsIcon,
   },
   {
     name: "lizard",
     beats: ["spock", "paper"],
-    icon: LizardIcon,
+    Icon: LizardIcon,
   },
   {
     name: "spock",
     beats: ["scissors", "rock"],
-    icon: SpockIcon,
+    Icon: SpockIcon,
   },
 ];

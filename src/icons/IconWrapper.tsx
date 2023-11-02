@@ -10,8 +10,8 @@ export const IconWrapper: FC<
     <div
       style={{
         borderRadius: "50%",
-        width: "150px",
-        height: "150px",
+        width: 150,
+        height: 150,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -22,8 +22,8 @@ export const IconWrapper: FC<
       <div
         style={{
           borderRadius: "50%",
-          width: "110px",
-          height: "110px",
+          width: 110,
+          height: 110,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
