@@ -1,11 +1,11 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900');
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 html {
   font-size: 62.5%;
 }
@@ -17,6 +17,8 @@ html, body, #root {
 }
 
 body {
+  color: rgba(255, 255, 255, 0.87);
+  font-family: 'Barlow', sans-serif;
   font-size: 1.6rem;
   background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
 }

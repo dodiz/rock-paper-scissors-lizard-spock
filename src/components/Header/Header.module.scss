@@ -1,0 +1,48 @@
+.container {
+  transform: translateY(-200px);
+  opacity: 0;
+  animation: fadeIn 0.5s cubic-bezier(0.1, 0.96, 0, 1.4) forwards;
+  padding: 1.8rem;
+  display: flex;
+  width: 70rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1.5rem;
+  border: 0.3rem solid rgba(255, 255, 255, 0.29);
+  .labels {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .score {
+    border-radius: 1rem;
+    background: #f1f1f1;
+    padding: 1.6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+    gap: 0.5rem;
+    .label {
+      color: #2a45c2;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .value {
+      color: #565468;
+      font-size: 6rem;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
