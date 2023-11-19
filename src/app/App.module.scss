@@ -1,11 +1,12 @@
 .container {
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-bottom: 6rem;
-  gap: 16rem;
+  gap: 4rem;
   .selection {
     position: relative;
   }
