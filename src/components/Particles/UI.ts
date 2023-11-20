@@ -71,7 +71,7 @@ class Particle {
     this.x += this.speedX;
     this.y += this.speedY;
     this.ctx.fillStyle = "rgba(" + this.color + "," + this.opacity + ")";
-    this.size -= 0.005;
+    this.size -= 0.01;
     this.opacity -= 0.005;
     if (this.size < 0) {
       this.size = 0;

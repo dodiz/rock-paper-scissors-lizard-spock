@@ -24,7 +24,11 @@ export const Arena: FC<{ selected: Move }> = ({ selected }) => {
     const Icon = moves[index].Icon;
     return <Icon />;
   }, [index]);
-
+  const result = useMemo(() => {
+    if (selected.name === moves[index].name) return "draw";
+    if (selected.beats.includes(moves[index].name)) return "win";
+    return "lose";
+  }, [index, selected]);
   return (
     <>
       {reveal
@@ -35,8 +39,15 @@ export const Arena: FC<{ selected: Move }> = ({ selected }) => {
           : "You lose!"
         : "Waiting for opponent..."}
       <div className={styles.arena}>
-        <div className={styles.selected}>
-          <selected.Icon />
+        <div className={styles.selectedContainer}>
+          {reveal && result === "win" && (
+            <Particles width={800} height={800} speed={10} color="200,200,0" />
+          )}
+          <div className={classNames(result === "win" && styles.winner)}>
+            <div className={styles.selected}>
+              <selected.Icon />
+            </div>
+          </div>
         </div>
         <div
           className={classNames(
@@ -44,13 +55,21 @@ export const Arena: FC<{ selected: Move }> = ({ selected }) => {
             reveal && styles.reveal
           )}
         >
-          <div className={styles.particles}>
-            <Particles
-              color={reveal ? "150, 0, 0" : "255, 255, 255"}
-              speed={reveal ? 20 : 3}
-            />
+          {!reveal ? (
+            <div className={styles.loadingParticles}>
+              <Particles
+                width={300}
+                height={300}
+                color="255, 255, 255"
+                speed={3}
+              />
+            </div>
+          ) : result === "lose" ? (
+            <Particles width={800} height={800} speed={10} color="200,200,0" />
+          ) : null}
+          <div className={classNames(result === "lose" && styles.winner)}>
+            <div className={styles.opponent}>{Random}</div>
           </div>
-          <div className={styles.opponent}>{Random}</div>
         </div>
       </div>
     </>

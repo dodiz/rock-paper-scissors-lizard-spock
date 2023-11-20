@@ -3,7 +3,12 @@ import { UI } from "./UI";
 import styles from "./Particles.module.scss";
 import { ParticlesProps } from "./Particles.types";
 
-export const Particles: FC<ParticlesProps> = ({ speed, color }) => {
+export const Particles: FC<ParticlesProps> = ({
+  width,
+  height,
+  speed,
+  color,
+}) => {
   const ref = useRef<ElementRef<"canvas">>(null);
 
   useEffect(() => {
@@ -17,6 +22,11 @@ export const Particles: FC<ParticlesProps> = ({ speed, color }) => {
   }, [speed, color]);
 
   return (
-    <canvas className={styles.particles} width={600} height={600} ref={ref} />
+    <canvas
+      className={styles.particles}
+      width={width}
+      height={height}
+      ref={ref}
+    />
   );
 };
