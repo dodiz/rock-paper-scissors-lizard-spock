@@ -2,7 +2,7 @@ import { FC } from "react";
 import { HeaderProps } from "./Header.types";
 import styles from "./Header.module.scss";
 
-export const Header: FC<HeaderProps> = ({ labels }) => {
+export const Header: FC<HeaderProps> = ({ labels, score }) => {
   return (
     <div
       className={styles.container}
@@ -17,7 +17,7 @@ export const Header: FC<HeaderProps> = ({ labels }) => {
       </div>
       <div className={styles.score}>
         <p className={styles.label}>Score</p>
-        <p className={styles.value}>0</p>
+        <p className={styles.value}>{score}</p>
       </div>
     </div>
   );

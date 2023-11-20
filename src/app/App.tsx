@@ -7,14 +7,17 @@ import { Reset } from "./Reset";
 
 export const App: FC = () => {
   const [selected, setSelected] = useState<Move | null>(null);
+  const [score, setScore] = useState(0);
 
   return (
     <div className={styles.container}>
       <Reset onClick={() => setSelected(null)} />
-      <Header labels={moves.map((m) => m.name)} />
+      <Header score={score} labels={moves.map((m) => m.name)} />
       <div className={styles.selection}>
         <Selection selected={selected} moves={moves} onSelect={setSelected} />
-        {selected && <Arena selected={selected} />}
+        {selected && (
+          <Arena onWin={() => setScore((p) => p + 1)} selected={selected} />
+        )}
       </div>
     </div>
   );
