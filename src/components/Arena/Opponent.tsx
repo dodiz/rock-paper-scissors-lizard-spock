@@ -48,7 +48,7 @@ export const Opponent: FC<OpponentProps> = ({
       <div className={styles.pickedLabel}>The House picked</div>
       {result === "pending" ? (
         <div className={styles.loadingParticles}>
-          <Particles width={300} height={300} color="255, 255, 255" speed={3} />
+          <Particles width={600} height={600} color="255, 255, 255" speed={4} />
         </div>
       ) : result === "lose" ? (
         <Particles width={800} height={800} speed={10} color="200,200,0" />
