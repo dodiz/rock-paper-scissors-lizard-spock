@@ -21,11 +21,12 @@ export const Opponent: FC<{
       onSelected(index);
     }, 5000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const Random = useMemo(() => {
     const Icon = moves[index].Icon;
-    return <Icon />;
+    return <Icon size={150} />;
   }, [index]);
 
   return (

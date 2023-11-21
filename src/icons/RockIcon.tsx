@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { Icon } from "@/types";
 import { IconWrapper } from "./IconWrapper";
 
-export const RockIcon: FC = () => {
+export const RockIcon: Icon = ({ size }) => {
   return (
-    <IconWrapper shadowColor="#9D1634" mainColor="#DB2E4D">
+    <IconWrapper size={size} shadowColor="#9D1634" mainColor="#DB2E4D">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 48 48"
-        width="55"
-        height="55"
+        width={size * 0.6}
+        height={size * 0.6}
       >
         <path
           fill="#3B4262"

@@ -14,8 +14,9 @@ export const App: FC = () => {
       <Reset onClick={() => setSelected(null)} />
       <Header score={score} labels={moves.map((m) => m.name)} />
       <div className={styles.selection}>
-        <Selection selected={selected} moves={moves} onSelect={setSelected} />
-        {selected && (
+        {!selected ? (
+          <Selection selected={selected} moves={moves} onSelect={setSelected} />
+        ) : (
           <Arena onWin={() => setScore((p) => p + 1)} selected={selected} />
         )}
       </div>

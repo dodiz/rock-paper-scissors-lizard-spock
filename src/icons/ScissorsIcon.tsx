@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { Icon } from "@/types";
 import { IconWrapper } from "./IconWrapper";
 
-export const ScissorsIcon: FC = () => {
+export const ScissorsIcon: Icon = ({ size }) => {
   return (
-    <IconWrapper shadowColor="#C76C1B" mainColor="#EB9F0E">
+    <IconWrapper size={size} shadowColor="#C76C1B" mainColor="#EB9F0E">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 51 58"
-        width="60"
-        height="60"
+        width={size * 0.6}
+        height={size * 0.6}
       >
         <path
           fill="#3B4262"

@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { Icon } from "@/types";
 import { IconWrapper } from "./IconWrapper";
 
-export const PaperIcon: FC = () => {
+export const PaperIcon: Icon = ({ size }) => {
   return (
-    <IconWrapper shadowColor="#2A45C2" mainColor="#4664F4">
+    <IconWrapper size={size} shadowColor="#2A45C2" mainColor="#4664F4">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 59 59"
-        width="60"
-        height="60"
+        width={size * 0.6}
+        height={size * 0.6}
       >
         <path
           fill="#3B4262"

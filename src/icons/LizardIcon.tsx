@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { Icon } from "@/types";
 import { IconWrapper } from "./IconWrapper";
 
-export const LizardIcon: FC = () => {
+export const LizardIcon: Icon = ({ size }) => {
   return (
-    <IconWrapper mainColor="#834EE3" shadowColor="#5F37A8">
+    <IconWrapper size={size} mainColor="#834EE3" shadowColor="#5F37A8">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 63 60"
-        width="60"
-        height="60"
+        width={size * 0.6}
+        height={size * 0.6}
       >
         <path
           fill="#3B4262"

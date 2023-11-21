@@ -4,14 +4,15 @@ export const IconWrapper: FC<
   PropsWithChildren & {
     mainColor: string;
     shadowColor: string;
+    size: number;
   }
-> = ({ mainColor, shadowColor, children }) => {
+> = ({ mainColor, shadowColor, children, size }) => {
   return (
     <div
       style={{
         borderRadius: "50%",
-        width: 150,
-        height: 150,
+        width: size * 1.4,
+        height: size * 1.4,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -22,8 +23,8 @@ export const IconWrapper: FC<
       <div
         style={{
           borderRadius: "50%",
-          width: 110,
-          height: 110,
+          width: size,
+          height: size,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

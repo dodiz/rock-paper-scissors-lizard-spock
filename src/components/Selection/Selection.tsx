@@ -2,7 +2,7 @@ import { FC, useMemo } from "react";
 import { SelectionProps } from "./Selection.types";
 import styles from "./Selection.module.scss";
 
-const r = 180;
+const r = 240;
 const animationMoveDuration = 0.3;
 const animationMoveDelay = 0.1;
 
@@ -70,7 +70,7 @@ export const Selection: FC<SelectionProps> = ({
               animationDuration: `${animationMoveDuration}s`,
             }}
           >
-            <move.Icon />
+            <move.Icon size={120} />
           </div>
         ))}
       </div>

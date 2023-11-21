@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { Icon } from "./Icon";
 
 export type Move = {
   name: string;
   beats: string[];
-  Icon: FC;
+  Icon: Icon;
 };
