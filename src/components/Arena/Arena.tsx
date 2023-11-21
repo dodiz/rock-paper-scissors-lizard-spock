@@ -8,7 +8,7 @@ import { ArenaProps } from "./Arena.types";
 import styles from "./Arena.module.scss";
 
 export const Arena: FC<ArenaProps> = ({ selected, onWin, onReset }) => {
-  const { isMobile } = useResponsive();
+  const { isDesktop, isTablet } = useResponsive();
   const [result, setResult] = useState<"pending" | "win" | "lose" | "draw">(
     "pending"
   );
@@ -47,12 +47,12 @@ export const Arena: FC<ArenaProps> = ({ selected, onWin, onReset }) => {
           )}
         >
           <div className={styles.selected}>
-            <selected.Icon size={isMobile ? 90 : 180} />
+            <selected.Icon size={isDesktop ? 180 : isTablet ? 120 : 90} />
           </div>
         </div>
       </div>
       <Opponent
-        iconSize={isMobile ? 90 : 180}
+        iconSize={isDesktop ? 180 : isTablet ? 120 : 90}
         onSelected={handleResult}
         result={result}
       />

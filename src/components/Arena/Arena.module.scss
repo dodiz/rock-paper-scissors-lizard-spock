@@ -193,11 +193,14 @@
     align-items: center;
     z-index: 99;
     @media (min-width: 768px) {
-      gap: 4rem;
+      gap: 2rem;
       bottom: unset;
       top: 50%;
       left: 50%;
       translate: -50% -50%;
+    }
+    @media (min-width: 1024px) {
+      gap: 4rem;
     }
     .label {
       scale: 0;
@@ -206,6 +209,12 @@
       text-wrap: nowrap;
       text-transform: uppercase;
       animation: popIn 0.3s 0.5s ease-in-out forwards;
+      @media (min-width: 768px) {
+        font-size: 5rem;
+      }
+      @media (min-width: 1024px) {
+        font-size: 6rem;
+      }
       @keyframes popIn {
         50% {
           scale: 1.1;
@@ -223,6 +232,7 @@
       border: 0;
       padding: 1.5rem 6rem;
       cursor: pointer;
+      text-wrap: nowrap;
       color: #3b4262;
       border-radius: 0.8rem;
       text-transform: uppercase;
