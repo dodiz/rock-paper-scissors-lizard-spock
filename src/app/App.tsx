@@ -3,6 +3,7 @@ import { Selection, Header, Arena } from "@/components";
 import { moves } from "@/data/moves";
 import { Move } from "@/types";
 import styles from "./App.module.scss";
+import { Rules } from "@/components/Rules";
 
 export const App: FC = () => {
   const [selected, setSelected] = useState<Move | null>(null);
@@ -21,6 +22,9 @@ export const App: FC = () => {
             selected={selected}
           />
         )}
+      </div>
+      <div className={styles.rules}>
+        <Rules />
       </div>
     </div>
   );

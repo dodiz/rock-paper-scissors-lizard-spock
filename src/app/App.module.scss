@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -7,10 +7,17 @@
   padding: 3rem 0;
   gap: 10rem;
   @media (min-width: 768px) {
-    gap: 18rem;
+    gap: 16rem;
   }
   .selection {
     position: relative;
     flex: 1;
+  }
+  .rules {
+    position: absolute;
+    bottom: 6rem;
+    @media (min-width: 768px) {
+      right: 6rem;
+    }
   }
 }
