@@ -16,20 +16,22 @@ export const Opponent: FC<OpponentProps> = ({
   iconSize,
 }) => {
   const [index, setIndex] = useState(0);
-
   useEffect(() => {
+    if (result !== "pending") return;
     const interval = setInterval(() => {
       setIndex((p) => (p + 1 === moves.length ? 0 : p + 1));
     }, 100);
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       clearInterval(interval);
       const index = Math.floor(Math.random() * moves.length);
       setIndex(index);
       onSelected(index);
     }, 5000);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [onSelected, result]);
 
   const Random = useMemo(() => {
     const Icon = moves[index].Icon;

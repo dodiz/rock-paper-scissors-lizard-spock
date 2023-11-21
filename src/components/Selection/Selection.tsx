@@ -11,7 +11,7 @@ export const Selection: FC<SelectionProps> = ({
   selected,
 }) => {
   const { isMobile } = useResponsive();
-  const radius = useMemo(() => (isMobile ? 140 : 180), [isMobile]);
+  const radius = useMemo(() => (isMobile ? 140 : 190), [isMobile]);
 
   const angle = useMemo(() => (2 * Math.PI) / moves.length, [moves]);
   const outline = useMemo(() => {

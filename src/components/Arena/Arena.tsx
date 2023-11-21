@@ -12,14 +12,16 @@ export const Arena: FC<ArenaProps> = ({ selected, onWin, onReset }) => {
   const [result, setResult] = useState<"pending" | "win" | "lose" | "draw">(
     "pending"
   );
-  const handleResult = useCallback((index: number) => {
-    if (selected.name === moves[index].name) setResult("draw");
-    else if (selected.beats.includes(moves[index].name)) {
-      onWin();
-      setResult("win");
-    } else setResult("lose");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleResult = useCallback(
+    (index: number) => {
+      if (selected.name === moves[index].name) setResult("draw");
+      else if (selected.beats.includes(moves[index].name)) {
+        onWin();
+        setResult("win");
+      } else setResult("lose");
+    },
+    [onWin, selected]
+  );
 
   return (
     <div className={styles.arena}>
