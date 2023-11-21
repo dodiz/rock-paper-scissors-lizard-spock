@@ -10,7 +10,7 @@ export const Arena: FC<{
   selected: Move;
   onReset: () => void;
   onWin: () => void;
-}> = ({ selected, onWin }) => {
+}> = ({ selected, onWin, onReset }) => {
   const [result, setResult] = useState<"pending" | "win" | "lose" | "draw">(
     "pending"
   );
@@ -32,10 +32,7 @@ export const Arena: FC<{
             {result === "lose" && "You Lose!"}
             {result === "draw" && "Draw!"}
           </div>
-          <button
-            className={styles.button}
-            onClick={() => setResult("pending")}
-          >
+          <button className={styles.button} onClick={onReset}>
             Play Again
           </button>
         </div>
