@@ -65,6 +65,7 @@
     .opponent {
       position: relative;
       filter: saturate(0);
+      transition: scale 0.5s;
       scale: 0;
       animation: bounceUp 1s 1s forwards, scaleUp 3s 2s ease-in-out forwards,
         shake 0.3s 2s ease-in infinite alternate;
@@ -171,7 +172,7 @@
     }
   }
   .winner {
-    animation: bounce 1s ease-in-out alternate infinite;
+    animation: bounce 1s 0.3s ease-in-out alternate infinite;
     @keyframes bounce {
       50% {
         scale: 1.2;
