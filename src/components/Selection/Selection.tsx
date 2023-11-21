@@ -1,16 +1,18 @@
 import { FC, useMemo } from "react";
+import { useResponsive } from "@/hooks";
 import { SelectionProps } from "./Selection.types";
 import styles from "./Selection.module.scss";
 
-const r = 240;
 const animationMoveDuration = 0.3;
 const animationMoveDelay = 0.1;
-
 export const Selection: FC<SelectionProps> = ({
   moves,
   onSelect,
   selected,
 }) => {
+  const { isMobile } = useResponsive();
+  const radius = useMemo(() => (isMobile ? 140 : 200), [isMobile]);
+
   const angle = useMemo(() => (2 * Math.PI) / moves.length, [moves]);
   const outline = useMemo(() => {
     const path =
@@ -19,7 +21,9 @@ export const Selection: FC<SelectionProps> = ({
         .fill(0)
         .map(
           (_, i) =>
-            `${r + r * Math.sin(angle * i)} ${r + r * -Math.cos(angle * i)}`
+            `${radius + radius * Math.sin(angle * i)} ${
+              radius + radius * -Math.cos(angle * i)
+            }`
         )
         .join("L");
 
@@ -32,7 +36,7 @@ export const Selection: FC<SelectionProps> = ({
           }s`,
         }}
         className={styles.outline}
-        viewBox={`0 0 ${r * 2} ${r * 2}`}
+        viewBox={`0 0 ${radius * 2} ${radius * 2}`}
         stroke="black"
         strokeWidth="25"
         fill="none"
@@ -40,15 +44,15 @@ export const Selection: FC<SelectionProps> = ({
         <path d={path} />
       </svg>
     );
-  }, [moves, angle]);
+  }, [moves, angle, radius]);
 
   return (
     <div className={styles.container + " " + (!!selected && styles.selected)}>
       <div
         className={styles.ring}
         style={{
-          width: r * 2,
-          height: r * 2,
+          width: radius * 2,
+          height: radius * 2,
         }}
       >
         {outline}
@@ -62,15 +66,17 @@ export const Selection: FC<SelectionProps> = ({
             style={{
               translate:
                 selected === move
-                  ? `calc(${r}px - 50%) calc(${r}px - 50%)`
+                  ? `calc(${radius}px - 50%) calc(${radius}px - 50%)`
                   : `calc(-50% + ${
-                      r + r * Math.sin(angle * i)
-                    }px) calc(-50% + ${r + r * -Math.cos(angle * i)}px)`,
+                      radius + radius * Math.sin(angle * i)
+                    }px) calc(-50% + ${
+                      radius + radius * -Math.cos(angle * i)
+                    }px)`,
               animationDelay: `${animationMoveDelay * i}s`,
               animationDuration: `${animationMoveDuration}s`,
             }}
           >
-            <move.Icon size={120} />
+            <move.Icon size={isMobile ? 90 : 120} />
           </div>
         ))}
       </div>

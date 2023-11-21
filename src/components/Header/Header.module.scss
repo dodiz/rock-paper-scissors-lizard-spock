@@ -4,38 +4,54 @@
   animation: fadeIn 0.5s cubic-bezier(0.1, 0.96, 0, 1.4) forwards;
   padding: 1.8rem;
   display: flex;
-  width: 70rem;
   justify-content: space-between;
   align-items: center;
   border-radius: 1.5rem;
   border: 0.3rem solid rgba(255, 255, 255, 0.29);
+  width: 95%;
+  @media (min-width: 768px) {
+    width: 70rem;
+  }
   .labels {
     display: flex;
     flex-direction: column;
+    font-size: 1.8rem;
     line-height: 1;
-    font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: 700;
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
   .score {
     border-radius: 1rem;
     background: #f1f1f1;
-    padding: 1.6rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 15rem;
     gap: 0.5rem;
+    padding: 1rem 2.4rem;
+    @media (min-width: 768px) {
+      width: 15rem;
+      padding: 1.6rem 0;
+    }
     .label {
       color: #2a45c2;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 700;
+      text-transform: uppercase;
+      @media (min-width: 768px) {
+        font-size: 2.5rem;
+      }
     }
     .value {
       color: #565468;
-      font-size: 6rem;
+      font-size: 4rem;
       font-weight: 700;
+      @media (min-width: 768px) {
+        font-size: 6rem;
+      }
     }
   }
 }

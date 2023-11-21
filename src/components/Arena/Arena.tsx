@@ -2,15 +2,13 @@ import { FC, useCallback, useState } from "react";
 import classNames from "classnames";
 import { Particles } from "@/components";
 import { moves } from "@/data/moves";
-import styles from "./Arena.module.scss";
-import { Move } from "@/types";
+import { useResponsive } from "@/hooks";
 import { Opponent } from "./Opponent";
+import { ArenaProps } from "./Arena.types";
+import styles from "./Arena.module.scss";
 
-export const Arena: FC<{
-  selected: Move;
-  onReset: () => void;
-  onWin: () => void;
-}> = ({ selected, onWin, onReset }) => {
+export const Arena: FC<ArenaProps> = ({ selected, onWin, onReset }) => {
+  const { isMobile } = useResponsive();
   const [result, setResult] = useState<"pending" | "win" | "lose" | "draw">(
     "pending"
   );
@@ -38,6 +36,7 @@ export const Arena: FC<{
         </div>
       )}
       <div className={styles.selectedContainer}>
+        <div className={styles.pickedLabel}>You picked</div>
         {result === "win" && (
           <Particles width={800} height={800} speed={10} color="200,200,0" />
         )}
@@ -48,11 +47,15 @@ export const Arena: FC<{
           )}
         >
           <div className={styles.selected}>
-            <selected.Icon size={150} />
+            <selected.Icon size={isMobile ? 90 : 180} />
           </div>
         </div>
       </div>
-      <Opponent onSelected={handleResult} result={result} />
+      <Opponent
+        iconSize={isMobile ? 90 : 180}
+        onSelected={handleResult}
+        result={result}
+      />
     </div>
   );
 };

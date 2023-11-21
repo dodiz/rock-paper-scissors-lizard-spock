@@ -7,7 +7,7 @@ export const Header: FC<HeaderProps> = ({ labels, score }) => {
     <div
       className={styles.container}
       style={{
-        animationDelay: `${0.3 * labels.length}s`,
+        animationDelay: `${0.2 * labels.length}s`,
       }}
     >
       <div className={styles.labels}>

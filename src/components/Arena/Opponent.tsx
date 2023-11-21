@@ -1,13 +1,20 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
-import styles from "./Arena.module.scss";
-import { Particles } from "..";
+import { Particles } from "@/components";
 import { moves } from "@/data/moves";
+import styles from "./Arena.module.scss";
 
-export const Opponent: FC<{
+type OpponentProps = {
   result: "pending" | "win" | "lose" | "draw";
+  iconSize: number;
   onSelected: (index: number) => void;
-}> = ({ result, onSelected }) => {
+};
+
+export const Opponent: FC<OpponentProps> = ({
+  result,
+  onSelected,
+  iconSize,
+}) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -26,8 +33,8 @@ export const Opponent: FC<{
 
   const Random = useMemo(() => {
     const Icon = moves[index].Icon;
-    return <Icon size={150} />;
-  }, [index]);
+    return <Icon size={iconSize} />;
+  }, [index, iconSize]);
 
   return (
     <div
@@ -36,6 +43,7 @@ export const Opponent: FC<{
         result !== "pending" && styles.reveal
       )}
     >
+      <div className={styles.pickedLabel}>The House picked</div>
       {result === "pending" ? (
         <div className={styles.loadingParticles}>
           <Particles width={300} height={300} color="255, 255, 255" speed={3} />
