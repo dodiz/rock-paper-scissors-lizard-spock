@@ -3,7 +3,6 @@ import { Selection, Header, Arena } from "@/components";
 import { moves } from "@/data/moves";
 import { Move } from "@/types";
 import styles from "./App.module.scss";
-import { Reset } from "./Reset";
 
 export const App: FC = () => {
   const [selected, setSelected] = useState<Move | null>(null);
@@ -11,13 +10,16 @@ export const App: FC = () => {
 
   return (
     <div className={styles.container}>
-      <Reset onClick={() => setSelected(null)} />
       <Header score={score} labels={moves.map((m) => m.name)} />
       <div className={styles.selection}>
         {!selected ? (
           <Selection selected={selected} moves={moves} onSelect={setSelected} />
         ) : (
-          <Arena onWin={() => setScore((p) => p + 1)} selected={selected} />
+          <Arena
+            onReset={() => setSelected(null)}
+            onWin={() => setScore((p) => p + 1)}
+            selected={selected}
+          />
         )}
       </div>
     </div>

@@ -2,6 +2,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  position: relative;
   gap: 5rem;
   opacity: 0;
   animation: fadeIn 0.3s 0.2s ease-in-out forwards;
@@ -152,5 +153,60 @@
   }
   .draw {
     filter: saturate(0);
+  }
+  .results {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    z-index: 99;
+    .label {
+      scale: 0;
+      font-size: 6rem;
+      font-weight: 700;
+      text-wrap: nowrap;
+      text-transform: uppercase;
+      animation: popIn 0.3s 0.5s ease-in-out forwards;
+      @keyframes popIn {
+        50% {
+          scale: 1.1;
+        }
+        80% {
+          scale: 0.9;
+        }
+        100% {
+          scale: 1;
+        }
+      }
+    }
+    .button {
+      scale: 0;
+      border: 0;
+      padding: 1.5rem 6rem;
+      cursor: pointer;
+      color: #db2e4d;
+      border-radius: 0.8rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
+      box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+      animation: popIn 0.3s 0.8s ease-in-out forwards;
+      @keyframes popIn {
+        50% {
+          scale: 1.1;
+        }
+        80% {
+          scale: 0.9;
+        }
+        100% {
+          scale: 1;
+        }
+      }
+    }
   }
 }

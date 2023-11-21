@@ -6,10 +6,11 @@ import styles from "./Arena.module.scss";
 import { Move } from "@/types";
 import { Opponent } from "./Opponent";
 
-export const Arena: FC<{ selected: Move; onWin: () => void }> = ({
-  selected,
-  onWin,
-}) => {
+export const Arena: FC<{
+  selected: Move;
+  onReset: () => void;
+  onWin: () => void;
+}> = ({ selected, onWin }) => {
   const [result, setResult] = useState<"pending" | "win" | "lose" | "draw">(
     "pending"
   );
@@ -24,6 +25,21 @@ export const Arena: FC<{ selected: Move; onWin: () => void }> = ({
 
   return (
     <div className={styles.arena}>
+      {result !== "pending" && (
+        <div className={styles.results}>
+          <div className={styles.label}>
+            {result === "win" && "You Win!"}
+            {result === "lose" && "You Lose!"}
+            {result === "draw" && "Draw!"}
+          </div>
+          <button
+            className={styles.button}
+            onClick={() => setResult("pending")}
+          >
+            Play Again
+          </button>
+        </div>
+      )}
       <div className={styles.selectedContainer}>
         {result === "win" && (
           <Particles width={800} height={800} speed={10} color="200,200,0" />
